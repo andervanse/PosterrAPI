@@ -12,7 +12,6 @@ namespace Posterr.Application
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        private readonly ILogger<User> _logger;
 
         public UserAppService(
             IUserRepository userRepository,
@@ -21,7 +20,6 @@ namespace Posterr.Application
         {
             _userRepository = userRepository;
             _mapper = mapper;
-            _logger = logger;
         }
 
         public async Task<AppResult<UserDto>> SaveAsync(CreateUserDto userDto)

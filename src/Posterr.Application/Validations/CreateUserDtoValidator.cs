@@ -3,9 +3,9 @@ using Posterr.Application.DTOs;
 
 namespace Posterr.Application.Validations
 {
-    public class UserDtoValidator: AbstractValidator<UserDto>
+    public class CreateUserDtoValidator : AbstractValidator<CreateUserDto>
     {
-        public UserDtoValidator()
+        public CreateUserDtoValidator()
         {
             RuleFor(u => u.Name)
                 .NotEmpty()

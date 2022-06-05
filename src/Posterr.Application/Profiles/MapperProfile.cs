@@ -16,9 +16,15 @@ namespace Posterr.Application.Profiles
                 .ForMember(o => o.UserId, c => c.Ignore());
 
             CreateMap<UserSummary, UserSummaryDto>().ReverseMap()
-                .ForMember(o => o.UserId, c => c.Ignore()); 
+                .ForMember(o => o.UserId, c => c.Ignore());
 
-            CreateMap<Post, PostDto>().ReverseMap();
+            CreateMap<Post, PostDto>()
+                .ForMember(o => o.UserOwnerId, c => c.MapFrom(d => d.UserId))
+                .ReverseMap()
+                .ForMember(o => o.UserId, c => c.MapFrom(d => d.UserOwnerId));
+
+            CreateMap<CreatePostDto, Post>()
+                .ForMember(o => o.UserId, c => c.MapFrom(d => d.UserOwnerId));
         }
     }
 }
