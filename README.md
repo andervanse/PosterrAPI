@@ -21,14 +21,23 @@ PosterrAPI organization was created to have a simple but flexible structure, tak
 
 ## Getting Started
 
-On the project's root folder, run: 
+On the project's root folder: 
 
-```docker compose build```
+### Run Application
 
-```docker compose up```
+```docker-compose build```
+
+```docker-compose up```
+
+
+### Run Tests
+
+  ```docker-compose -f .\docker-compose-test.yml build```
+
+  ```docker-compose -f .\docker-compose-test.yml up```
 
 
 ### Prerequisites
-* <a href="https://docs.docker.com/compose/" target="_blank">Docker and Docker compose</a>
+* [Docker and Docker compose](https://docs.docker.com/compose/)
 
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio 2022</a>
+* [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)

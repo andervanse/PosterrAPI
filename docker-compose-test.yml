@@ -1,27 +1,19 @@
 version: '3.4'
 
 services:
-  posterr.api:
-    image: ${DOCKER_REGISTRY-}posterrapi
+  posterr.test:
+    depends_on: [database]
+    image: ${DOCKER_REGISTRY-}posterrtests
     build:
       context: .
-      dockerfile: src/Posterr.API/Dockerfile
+      dockerfile: test/Posterr.Data.Tests/Dockerfile
     networks:
       - appnetwork
     environment:
       CONNECTIONSTRINGS__DBCONNECTION: ${CONNECTIONSTRINGS__DBCONNECTION}
-  adminer:
-    depends_on: [database]
-    image: adminer
-    container_name: posterr_db_manager
-    restart: always
-    ports:
-      - 8080:8080
-    networks:
-      - appnetwork
   database:
     image: postgres:14.2-alpine
-    container_name: posterr_database
+    container_name: posterr_test_database
     restart: always
     ports:
       - 5432:5432   
