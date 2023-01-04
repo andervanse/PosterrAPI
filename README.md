@@ -41,3 +41,27 @@ On the project's root folder:
 * [Docker and Docker compose](https://docs.docker.com/compose/)
 
 * [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+
+
+
+## Planning
+
+### Questions for the Product Manager
+On this new reply-to-post, is ok to assume that the same post validations are applied?
+The @ mentioning must be persisted for future use?
+What happens if the @ mentioning is not at the beginning of the Post?
+Those replies are private between the owner of the post and the user who wrote the reply?
+
+To solve this problem I would add a new field in the Posts table to indicate that this is a 'reply-to-post' in the database.
+in the domain I'd add a property called IsReplyToPos in the Post class and filter these kinds of posts in a specific method in the post repository.
+
+
+
+## Critique
+
+I'd like to implement more unit tests, two for each requisite, considering a happy path and a wrong one.
+On the API I'd like to version the API and use attributes to describe each endpoint, I'd like to separate all the configuration in the Program.cs to a specific group of classes in a folder called 'config', making use of extension methods.
+
+When it comes to scaling, I would put a load balancer in front to the application and have some applications instances behind it.
+Another thing is make use of CQRS pattern, and separate reads and writes being made to the database, creating two databases, one to writes and one (possibly NoSql) to the reads.
+Yet another alternative would be separate the most important queries in microservices to scale, making using of containerization.
